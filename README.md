@@ -19,9 +19,8 @@ This Flask template has been built from the ground up to be a secure Progressive
 
 > [!TIP]
 > ## Content Security Policy (CSP) note
-> Content-Security-Policy is the name of an HTTP response header that modern browsers use to enhance the security of the app. The Content-Security-Policy header allows you to restrict which resources (such as JavaScript, CSS, Images, etc.) can be loaded, and the URLs that they can be loaded from.
-
-Although it is best applied as an HTTP response header, this template has applied it as a meta tag, which is the minimum standard.
+> Content-Security-Policy is the name of an HTTP response header that modern browsers use to enhance the security of the app. The Content-Security-Policy header allows you to restrict which resources (such as JavaScript, CSS, Images, etc.) can be loaded, and the URLs that they can be loaded from.  
+> Although it is best applied as an HTTP response header, this template has applied it as a meta tag, which is the minimum standard.
 
 > [!WARNING]
 > * Bootstrap 5.3.3 has been packaged in the template, developers should [monitor for discovered vulnerabilities](https://security.snyk.io/package/npm/bootstrap) and patch or update as needed.
