@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#000",
     "theme_color": "#000",
-    "orientation": "portrait-primary",
+    "orientation": "landscape-primary",
     "icons": [
       {
         "src": "icons/icon-128x128.png",
@@ -58,10 +58,16 @@
     ],
   "screenshots" : [
     {
-      "src": "icons/screenshot.png",
-      "sizes": "1920x1080",
+      "src": "icons/desktop_screenshot.png",
+      "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "wide",
+      "label": ""
+    },
+        {
+      "src": "icons/mobile_screenshot.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
       "label": ""
     }
   ]
