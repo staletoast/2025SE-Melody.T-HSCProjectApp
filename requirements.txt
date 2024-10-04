@@ -2,3 +2,4 @@ Flask
 SQLite3
 bcrypt
 flask_wtf
+flask-csp
