@@ -3,15 +3,16 @@ from flask import render_template
 from flask import request
 from flask_wtf import CSRFProtect
 from flask_csp.csp import csp_header
+import logging
 
 import userManagement as dbHandler
+
+app_log = logging.getLogger(__name__)
+app_log.basicConfig(filename='security_log.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(message)s')
 
 app = Flask(__name__)
 app.secret_key = b'_53oi3uriq9pifpff;apl'  ##create your own key
 csrf = CSRFProtect(app)
-
-
-
 
 @app.route('/', methods=['POST', 'GET'])
 @app.route('/index.html', methods=['GET'])
