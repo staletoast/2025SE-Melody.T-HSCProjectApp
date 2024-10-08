@@ -52,6 +52,6 @@ This Flask template has been built from the ground up to be a secure Progressive
 
 - All templates are [Bootstrap](https://getbootstrap.com/) ready
 - [SQLite](https://docs.python.org/3/library/sqlite3.html) has been provided for database design
-  
+
 > [!TIP]
 > Developers should [monitor Bootstrap 5.3.3 for discovered vulnerabilities](https://security.snyk.io/package/npm/bootstrap) and patch or update as needed.
