@@ -7,8 +7,11 @@ import logging
 
 import userManagement as dbHandler
 
+# Code snippet for logging a message
+# app.logger.critical("message")
+
 app_log = logging.getLogger(__name__)
-app_log.basicConfig(
+logging.basicConfig(
     filename="security_log.log",
     encoding="utf-8",
     level=logging.DEBUG,
