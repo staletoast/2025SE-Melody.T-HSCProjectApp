@@ -41,13 +41,13 @@ def root():
 @csp_header(
     {
         # Server Side CSP is consistent with meta CSP in layout.html
-        "base-uri": "self",
+        "base-uri": "'self'",
         "default-src": "'self'",
         "style-src": "'self'",
         "script-src": "'self'",
-        "img-src": "*",
+        "img-src": "'self' data:",
         "media-src": "'self'",
-        "font-src": "self",
+        "font-src": "'self'",
         "object-src": "'self'",
         "child-src": "'self'",
         "connect-src": "'self'",
