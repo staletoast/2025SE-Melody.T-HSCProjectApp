@@ -16,17 +16,17 @@ This Flask template has been built from the ground up to be a secure Progressive
 - Strict Content Security Policy
   - No inline `<script></script>`.
   - Restricted `<iframe>` loading
-  - XSS blocked
+  - CORS JS blocked
 - HTML Languaged declared.
 - Meta character set declared.
 - Private folders use .folderName syntax.
-- [Bootstrap](https://getbootstrap.com/) components served from a known and trusted Boostrap CDN.
+- [Bootstrap 5.3](https://getbootstrap.com/) components served local files.
 - CSRFProtect applied to form.
 - Form Pattern expression declared.
 
 ## To be implemented by developers
 
-- Web content, [Bootstrap](https://getbootstrap.com/) ready
+- Web content, [Bootstrap 5.3](https://getbootstrap.com/) ready
 - [SQLite](https://docs.python.org/3/library/sqlite3.html) database design and integration
 - Input sanitisation
 - Login, authentication or session management
@@ -36,7 +36,7 @@ This Flask template has been built from the ground up to be a secure Progressive
 ## Privacy advice for developers
 
 - The app should have a privacy handling policy
-- Only data essential for the purposes of the app should be collected
+- Only data essential for the app should be collected
 - Users should be given the option to download or delete their data
 - Passwords should be encrypted, including a salt, before hashing
 
@@ -50,7 +50,7 @@ This Flask template has been built from the ground up to be a secure Progressive
 
 ## Content advice for developers
 
-- All templates are [Bootstrap](https://getbootstrap.com/) ready
+- All templates are [Bootstrap 5.3](https://getbootstrap.com/) ready
 - [SQLite](https://docs.python.org/3/library/sqlite3.html) has been provided for database design
 
 > [!TIP]
