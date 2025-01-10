@@ -4,7 +4,7 @@ import bcrypt
 
 ### example
 def getUsers():
-    con = sql.connect(".databaseFiles/database.db")
+    con = sql.connect("databaseFiles/database.db")
     cur = con.cursor()
     cur.execute("SELECT * FROM id7-tusers")
     con.close()
