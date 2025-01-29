@@ -9,9 +9,13 @@
   "postCreateCommand": "",
   "postAttachCommand": {},
   "portsAttributes": {
+    "3000": {
+      "label": "API",
+      "onAutoForward": "silent"
+    },
     "5000": {
       "label": "Application",
-      "onAutoForward": "openPreview"
+      "onAutoForward": "openBrowser"
     }
   },
   "customizations": {
