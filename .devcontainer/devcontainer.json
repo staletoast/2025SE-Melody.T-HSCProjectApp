@@ -36,15 +36,8 @@
         "workbench.editorAssociations": {
           "*.md": "vscode.markdown.preview.editor"
         },
-      	"workbench.colorTheme": "Default Dark+",
-      	"workbench.iconTheme": "vscode-icons",
-      	"github.copilot.enable": {
-      		"python": false,
-      		"html": false,
-      		"css": false,
-      		"SQL": false
-      	},
-        "chat.agent.enabled": false
+        "workbench.colorTheme": "Default Dark+",
+        "workbench.iconTheme": "vscode-icons"
       },
       "extensions": [
         "McCarter.start-git-bash",
