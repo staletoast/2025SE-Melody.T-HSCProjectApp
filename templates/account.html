@@ -1,21 +1,39 @@
-{% extends "layout.html" %}
-{% block content %}
-<div class="container mt-5" style="max-width:400px;">
+{% extends "layout.html" %} {% block content %}
+<div class="container mt-5" style="max-width: 400px">
   <h2>Account Settings</h2>
+  <br />
   <div class="mb-3">
     <label class="form-label">Username</label>
-    <input type="text" class="form-control" value="{{ username }}" readonly>
+    <input type="text" class="form-control" value="{{ username }}" readonly />
+    <br />
+    <label class="form-label">Password</label>
+    <input type="text" class="form-control" value="***********" readonly />
   </div>
   <form method="POST" action="/change_password">
     <div class="mb-3">
+      <br />
+      <h4>Change Password</h4>
+      <br />
       <label for="current_password" class="form-label">Current Password</label>
-      <input type="password" class="form-control" id="current_password" name="current_password" required>
+      <input
+        type="password"
+        class="form-control"
+        id="current_password"
+        name="current_password"
+        required
+      />
     </div>
     <div class="mb-3">
       <label for="new_password" class="form-label">New Password</label>
-      <input type="password" class="form-control" id="new_password" name="new_password" required>
+      <input
+        type="password"
+        class="form-control"
+        id="new_password"
+        name="new_password"
+        required
+      />
     </div>
-    <button type="submit" class="btn btn-primary w-100">Change Password</button>
+    <button type="submit" class="btn btn-primary px-4">Confirm :)</button>
   </form>
   {% if error %}
   <div class="alert alert-danger mt-3">{{ error }}</div>

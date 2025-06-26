@@ -1,18 +1,92 @@
-{% extends "layout.html" %}
-{% block content %}
-<div class="container mt-5">
-  <h2>Study Timer</h2>
-  <div class="mb-3">
-    <label for="sessionTime" class="form-label">Set Study Session (minutes, min 30):</label>
-    <input type="number" id="sessionTime" class="form-control" min="30" value="30">
+{% extends "layout.html" %} {% block content %}
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="text-center" style="max-width: 500px">
+    <h2 class="mb-4">Study Timer</h2>
+
+    <!-- Session Time Input -->
+    <div class="mb-4">
+      <label for="sessionTime" class="form-label"
+        >Set Study Session (minutes):</label
+      >
+      <input
+        type="number"
+        id="sessionTime"
+        class="form-control text-center"
+        min="1"
+        value="30"
+        style="max-width: 200px; margin: 0 auto"
+      />
+    </div>
+
+    <!-- Preset Buttons -->
+    <div class="mb-3">
+      <button id="pomodoroBtn" class="btn btn-outline-primary btn-sm mx-2">25 min: Pomodoro</button>
+      <button id="breakBtn" class="btn btn-outline-secondary btn-sm mx-2">5 min: Break</button>
+    </div>
+
+    <!-- Circular Progress Bar -->
+    <div class="mb-4 position-relative d-inline-block">
+      <svg width="200" height="200" class="circular-progress">
+        <circle
+          cx="100"
+          cy="100"
+          r="90"
+          fill="none"
+          stroke="#e9ecef"
+          stroke-width="8"
+        />
+        <circle
+          id="progressCircle"
+          cx="100"
+          cy="100"
+          r="90"
+          fill="none"
+          stroke="#007bff"
+          stroke-width="8"
+          stroke-linecap="round"
+          stroke-dasharray="565.48"
+          stroke-dashoffset="565.48"
+          style="
+            transform: rotate(-90deg);
+            transform-origin: center;
+            transition: stroke-dashoffset 1s ease;
+          "
+        />
+      </svg>
+      <div class="position-absolute top-50 start-50 translate-middle">
+        <h3
+          id="timerDisplay"
+          class="mb-0"
+          style="font-size: 2rem; font-weight: bold"
+        >
+          30:00
+        </h3>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="mb-4">
+      <button id="startTimer" class="btn btn-success mx-1">
+        Start Session
+      </button>
+      <button id="pauseTimer" class="btn btn-warning mx-1" disabled>
+        Pause
+      </button>
+      <button id="resetTimer" class="btn btn-danger mx-1" disabled>
+        Reset
+      </button>
+    </div>
+
+    <!-- Session Result -->
+    <div id="sessionResult" class="mt-4"></div>
   </div>
-  <div class="mb-3">
-    <button id="startTimer" class="btn btn-success">Start Session</button>
-    <button id="pauseTimer" class="btn btn-warning" disabled>Pause</button>
-    <button id="resetTimer" class="btn btn-danger" disabled>Reset</button>
-  </div>
-  <h3 id="timerDisplay">30:00</h3>
-  <div id="sessionResult" class="mt-4"></div>
 </div>
+
+<style>
+  .circular-progress {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+</style>
+
 <script src="/static/js/timer.js"></script>
 {% endblock %}
