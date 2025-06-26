@@ -6,7 +6,8 @@ import bcrypt
 def getUsers():
     con = sql.connect("databaseFiles/database.db")
     cur = con.cursor()
-    cur.execute("SELECT * FROM id7-tusers")
+    cur.execute("SELECT * FROM users")
+    users = cur.fetchall()
     con.close()
-    return cur
+    return users
 

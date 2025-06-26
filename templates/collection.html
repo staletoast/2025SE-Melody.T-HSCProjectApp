@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Creature Collection</h2>
+  <div class="mb-3">
+    <span id="unlockedCount"></span> / <span id="totalCount"></span> creatures unlocked
+  </div>
+  <div class="row" id="creatureGrid">
+    <!-- Creature cards will be inserted here by JS -->
+  </div>
+</div>
+<script src="/static/js/collection.js"></script>
+{% endblock %}

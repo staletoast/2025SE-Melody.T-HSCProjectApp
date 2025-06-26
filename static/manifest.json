@@ -1,11 +1,11 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "StudyBuddy - Gamified Study Timer",
+    "short_name": "StudyBuddy",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#000",
-    "theme_color": "#000",
-    "orientation": "landscape-primary",
+    "background_color": "#ffffff",
+    "theme_color": "#007bff",
+    "orientation": "portrait",
     "icons": [
       {
         "src": "static/icons/icon-128x128.png",
