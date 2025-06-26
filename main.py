@@ -3,12 +3,14 @@ from flask import redirect
 from flask import render_template
 from flask import request
 from flask import jsonify
+import requests
 from flask_wtf import CSRFProtect
 from flask_csp.csp import csp_header
 import logging
-from flask import session, url_for
+from flask import session, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
+import os
 
 import userManagement as dbHandler
 

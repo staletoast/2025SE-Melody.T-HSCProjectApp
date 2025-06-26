@@ -7,7 +7,6 @@
     <input type="text" class="form-control" value="{{ username }}" readonly>
   </div>
   <form method="POST" action="/change_password">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     <div class="mb-3">
       <label for="current_password" class="form-label">Current Password</label>
       <input type="password" class="form-control" id="current_password" name="current_password" required>

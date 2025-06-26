@@ -24,7 +24,8 @@ function startTimer() {
       if (remainingSeconds <= 0) {
         clearInterval(timer);
         isRunning = false;
-        completeSession();
+        document.getElementById('sessionResult').innerHTML = '<div class="alert alert-success">Session complete! You unlocked a new creature! <a href="/collection">Go to Collection</a></div>';
+        // Optionally: send AJAX to backend to unlock creature
       }
     }
   }, 1000);
@@ -46,41 +47,6 @@ function resetTimer() {
   remainingSeconds = Math.max(30, parseInt(document.getElementById('sessionTime').value, 10)) * 60;
   updateDisplay();
   document.getElementById('sessionResult').innerHTML = '';
-}
-
-function completeSession() {
-  const sessionDuration = Math.max(30, parseInt(document.getElementById('sessionTime').value, 10)) * 60;
-  
-  fetch('/api/session_complete', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      duration: sessionDuration
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.unlocked) {
-      document.getElementById('sessionResult').innerHTML = 
-        '<div class="alert alert-success">' +
-        '<h5>🎉 Session Complete!</h5>' +
-        '<p>You unlocked a new creature! <a href="/collection" class="btn btn-primary btn-sm">View Collection</a></p>' +
-        '</div>';
-    } else {
-      document.getElementById('sessionResult').innerHTML = 
-        '<div class="alert alert-info">' +
-        '<h5>✅ Session Complete!</h5>' +
-        '<p>Great work! You\'ve unlocked all available creatures. <a href="/collection" class="btn btn-primary btn-sm">View Collection</a></p>' +
-        '</div>';
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    document.getElementById('sessionResult').innerHTML = 
-      '<div class="alert alert-warning">Session completed, but there was an error connecting to the server.</div>';
-  });
 }
 
 document.getElementById('startTimer').onclick = () => {
