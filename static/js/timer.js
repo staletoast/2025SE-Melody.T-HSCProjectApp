@@ -43,52 +43,81 @@ function startTimer() {
 function completeSession() {
   const sessionDuration = totalSeconds;
 
-  fetch("/api/session_complete", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      duration: sessionDuration,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.unlocked) {
-        // Get the creature details
-        fetch("/api/collection")
-          .then((response) => response.json())
-          .then((collectionData) => {
-            const unlockedCreature = collectionData.creatures.find(
-              (c) => c.id === data.creature_id
-            );
-            if (unlockedCreature) {
-              document.getElementById("sessionResult").innerHTML = `
-              <div class="alert alert-success text-center">
-                <h5>🎉 Session Complete!</h5>
-                <div class="mt-3 mb-3">
-                  <img src="${unlockedCreature.image}" alt="${unlockedCreature.name}" style="width: 80px; height: 80px; object-fit: contain;">
-                </div>
-                <p><strong>You unlocked: ${unlockedCreature.name}!</strong></p>
-                <p class="small">${unlockedCreature.description}</p>
-                <a href="/collection" class="btn btn-primary btn-sm">View Full Beastiary</a>
-              </div>`;
-            }
-          });
-      } else {
-        document.getElementById("sessionResult").innerHTML = `
-        <div class="alert alert-info text-center">
-          <h5>✅ Session Complete!</h5>
-          <p>Amazing work! You've unlocked all available creatures.</p>
-          <a href="/collection" class="btn btn-primary btn-sm">View Beastiary</a>
-        </div>`;
-      }
+  // First show completion message with unlock button
+  document.getElementById("sessionResult").innerHTML = `
+    <div class="alert alert-success text-center">
+      <h5>🎉 Study Session Complete!</h5>
+      <p>Great job! You completed a ${Math.floor(
+        sessionDuration / 60
+      )} minute study session.</p>
+      <p class="mb-3">Ready to see what creature you've unlocked?</p>
+      <button id="unlockCreatureBtn" class="btn btn-primary">Unlock Random Creature!</button>
+    </div>`;
+
+  // Add click handler for unlock button
+  document.getElementById("unlockCreatureBtn").onclick = function () {
+    // Disable button and show loading
+    this.disabled = true;
+    this.innerHTML = "Unlocking...";
+
+    // Call API to complete session and unlock creature
+    fetch("/api/session_complete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        duration: sessionDuration,
+      }),
     })
-    .catch((error) => {
-      console.error("Error:", error);
-      document.getElementById("sessionResult").innerHTML =
-        '<div class="alert alert-warning">Session completed, but there was an error connecting to the server.</div>';
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.unlocked) {
+          // Get the creature details
+          fetch("/api/collection")
+            .then((response) => response.json())
+            .then((collectionData) => {
+              const unlockedCreature = collectionData.creatures.find(
+                (c) => c.id === data.creature_id
+              );
+              if (unlockedCreature) {
+                document.getElementById("sessionResult").innerHTML = `
+                <div class="alert alert-success text-center">
+                  <h5>🎉 Creature Unlocked!</h5>
+                  <div class="mt-3 mb-3">
+                    <img src="${unlockedCreature.image}" alt="${unlockedCreature.name}" style="width: 80px; height: 80px; object-fit: contain;">
+                  </div>
+                  <p><strong>You unlocked: ${unlockedCreature.name}!</strong></p>
+                  <p class="small">${unlockedCreature.description}</p>
+                  <p class="mt-3">Redirecting to Beastiary...</p>
+                </div>`;
+
+                // Redirect to collection page after 2 seconds
+                setTimeout(() => {
+                  window.location.href = "/collection";
+                }, 2000);
+              }
+            });
+        } else {
+          document.getElementById("sessionResult").innerHTML = `
+          <div class="alert alert-info text-center">
+            <h5>✅ Session Complete!</h5>
+            <p>Amazing work! You've unlocked all available creatures.</p>
+            <p class="mt-3">Redirecting to Beastiary...</p>
+          </div>`;
+
+          // Redirect to collection page after 2 seconds
+          setTimeout(() => {
+            window.location.href = "/collection";
+          }, 2000);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        document.getElementById("sessionResult").innerHTML =
+          '<div class="alert alert-warning">Session completed, but there was an error connecting to the server.</div>';
+      });
+  };
 }
 
 function pauseTimer() {
