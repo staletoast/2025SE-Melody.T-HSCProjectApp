@@ -71,7 +71,7 @@ function completeSession() {
                 </div>
                 <p><strong>You unlocked: ${unlockedCreature.name}!</strong></p>
                 <p class="small">${unlockedCreature.description}</p>
-                <a href="/collection" class="btn btn-primary btn-sm">View Full Collection</a>
+                <a href="/collection" class="btn btn-primary btn-sm">View Full Beastiary</a>
               </div>`;
             }
           });
@@ -80,7 +80,7 @@ function completeSession() {
         <div class="alert alert-info text-center">
           <h5>✅ Session Complete!</h5>
           <p>Amazing work! You've unlocked all available creatures.</p>
-          <a href="/collection" class="btn btn-primary btn-sm">View Collection</a>
+          <a href="/collection" class="btn btn-primary btn-sm">View Beastiary</a>
         </div>`;
       }
     })

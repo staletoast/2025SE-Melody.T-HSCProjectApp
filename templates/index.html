@@ -1,11 +1,16 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="container">
-    <div class="row">
-        <h1 class="display-1">Hello world!</h1>
-    </div>
-    <div class="row">
-
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1 class="display-3 mb-4">TIME TO LOCK IN!!!</h1>
+            <h2 class="mb-5">Welcome!</h2>
+            
+            <div class="d-grid gap-3" style="max-width: 300px; margin: 0 auto;">
+                <a href="/login" class="btn btn-primary btn-lg">Log In</a>
+                <a href="/register" class="btn btn-outline-primary btn-lg">Register</a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

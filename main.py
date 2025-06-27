@@ -63,6 +63,9 @@ def root():
     }
 )
 def index():
+    # Redirect to home if user is already logged in
+    if "user_id" in session:
+        return redirect("/home")
     return render_template("/index.html")
 
 
